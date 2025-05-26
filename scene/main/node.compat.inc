@@ -34,8 +34,8 @@ void Node::_set_name_bind_compat_76560(const String &p_name) {
 	set_name(p_name);
 }
 
-void Node::_get_rpc_config_bind_compat_485DB703() {
-	get_rpc_config(true);
+Variant Node::_get_rpc_config_bind_compat_485DB703() const {
+	return get_rpc_config(true);
 }
 
 void Node::_bind_compatibility_methods() {
