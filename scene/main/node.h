@@ -412,7 +412,7 @@ protected:
 
 #ifndef DISABLE_DEPRECATED
 	void _set_name_bind_compat_76560(const String &p_name);
-	Variant _get_rpc_config_bind_compat_485DB703() const;
+	Variant _get_rpc_config_bind_compat_485DB703(bool script_rpc_get) const;
 	static void _bind_compatibility_methods();
 #endif
 
