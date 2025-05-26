@@ -34,8 +34,13 @@ void Node::_set_name_bind_compat_76560(const String &p_name) {
 	set_name(p_name);
 }
 
+void Node::_set_name_bind_compat_485DB703() {
+	get_rpc_config(true);
+}
+
 void Node::_bind_compatibility_methods() {
 	ClassDB::bind_compatibility_method(D_METHOD("set_name", "name"), &Node::_set_name_bind_compat_76560);
+	ClassDB::bind_compatibility_method(D_METHOD("get_rpc_config", "script_rpc_get"), &Node::_set_name_bind_compat_485DB703);
 }
 
 #endif
