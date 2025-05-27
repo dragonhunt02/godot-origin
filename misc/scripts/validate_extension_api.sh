@@ -60,6 +60,19 @@ while read -r file; do
 
     # Download the reference extension_api.json
     wget -nv --retry-on-http-error=503 --tries=5 --timeout=60 -cO "$reference_file" "https://raw.githubusercontent.com/godotengine/godot-cpp/godot-$reference_tag/gdextension/extension_api.json" || has_problems=1
+	
+    ls .
+    cat $reference_file
+    echo "Newdumpfile"
+	mkdir testd
+    pushd .
+    cd testd
+    ".$1" --headless --dump-extension-api 2>&1 || true
+	cat extension_api.json
+	rm extension_api.json
+    popd
+	rm -r testd
+ 
     # Validate the current API against the reference
     "$1" --headless --validate-extension-api "$reference_file" 2>&1 | tee "$validate" | awk '!/^Validate extension JSON:/' - || true
     # Collect the expected and actual validation errors
